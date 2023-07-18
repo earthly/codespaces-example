@@ -6,8 +6,7 @@
 	"features": {
 		"docker-in-docker": {
 			"version": "latest"
-		},
-        "postCommitCommand": ""
+		}
 	},
 
     // Adds on Earthly syntax highlighting extension
