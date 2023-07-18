@@ -1,0 +1,35 @@
+{
+	"name": "Earthly Docker",
+	"dockerFile": "Dockerfile",
+	
+    // Installs docker-in-docker feature
+	"features": {
+		"docker-in-docker": {
+			"version": "latest"
+		},
+        "postCommitCommand": ""
+	},
+
+    // Adds on Earthly syntax highlighting extension
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"earthly.earthfile-syntax-highlighting"
+			]
+		}
+	},
+
+    // You can update your repo to pass any required secrets then load them below
+    // It is recommended to login to docker to avoid rate limiting issues
+    // For more information on setting up your secrets read the guide here:
+    // https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/configuring-dev-containers/specifying-recommended-secrets-for-a-repository
+    
+    // "secrets": {
+    //     "DOCKER_USERNAME": {
+    //       "description": "Your username for logging into docker",
+    //     },
+    //     "DOCKER_PASSWORD": {
+    //         "description": "Your password for logging into docker",
+    //     }
+    // }
+}
