@@ -1,4 +1,6 @@
 # Basic Dockerfile for installing latest Earthly version
+
+# You can change this devcontainer image to one that suits your needs
 FROM mcr.microsoft.com/devcontainers/universal:2
 
 RUN apt update && apt install -y bash-completion 
