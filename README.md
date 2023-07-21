@@ -36,23 +36,25 @@ The basic setup for Earthly in Codespaces uses Docker for running Earthly.
 1. Test the installation by running `earthly github.com/earthly/hello-world+hello`
 1. Your Earthly commands will now run on docker in Codespaces!
 
-_Note_: It is recommended to login to the docker registry to avoid any rate limiting issues. Follow the guide linked in the devcontainer.json for how to setup your secrets in your codespace.
+_Note_: It is recommended to login to DockerHub to avoid any rate limiting issues. Follow the guide linked in the devcontainer.json for how to setup your secrets in your codespace. The postCreateCommand.sh script will then handle login on startup for you.
 
 ### Setup with Satellites (Recommended)
 
 With Satellites you can run Earthly in your devcontainer without needing to install docker or podman! This can allow you to have a more simplified setup as well as faster Earthly build times!
 
-_Note_: At this time the `SAVE IMAGE --push` command in Earthfiles requires you to have docker or podman installed. If you will be using this command you will still need to include installing docker in your devcontainer otherwise it can be removed.
+_Note_: At this time to use `SAVE IMAGE --push` command in Earthfiles without docker or podman installed required you to use the `--no-output` flag. For example `earthly --org my-org --no-output --push +hello`
 
 1. Follow the [Basic Setup](#basic-setup) steps above
 1. If you already have an Earthly account:
-    - Login to your Earthly account in your devcontainer `earthly account login --token {YOUR_TOKEN_HERE}`
+    - Add your Earthly login token as a Codespaces secret `EARTHLY_TOKEN`
     
     If you don't have an Earthly account, or haven't used satellites before, read more about them here:
-    - https://docs.earthly.dev/earthly-cloud/satellites
-    - Registration: https://cloud.earthly.dev/login
-    - Then login with `earthly account login --token {YOUR_TOKEN_HERE}`
-1. Launch your satellite: `earthly sat launch {YOUR_SAT_NAME_HERE}`
+    - [Earthly Satellites](https://docs.earthly.dev/earthly-cloud/satellites)
+    - [Earthly Login/Registration](https://cloud.earthly.dev/login)
+    - [Earthly Create Token](https://docs.earthly.dev/docs/earthly-command#earthly-account-create-token)
+    - Then add your Earthly login token as a Codespaces secret `EARTHLY_TOKEN`
+1. Set your Earthly org name in devcontainer.json: `EARTHLY_ORG`
+1. Set your Satellite name in devcontainer.json: `EARHTLY_SATELLITE`
 1. Your Earthly commands will now run on your satellite!
 
 ### Setup with Podman (Manually customizing your Devcontainer)
@@ -65,11 +67,11 @@ These issues are still being investigated at this time and there is no fix avail
 
 You can confirm that you are being affected by these issues by checking the logs from the earthly-buildkit container via `podman logs {YOUR_CONTAINER_ID_HERE}`. If you see `sh: write error: Invalid argument` before the container exits you are affected by this issue.  
 
-Related to: https://github.com/containers/podman/issues/12559
+Related to: [Podman-on-Docker building fails on cgroup2 enabled systems](https://github.com/containers/podman/issues/12559)
 
 For more information on Podman with Devcontainers:
     
-- https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman 
+- [Advanced Containers - Podman](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman) 
     
     _Note_: This doc refers to setting up Podman as a remote container instead internal to the devcontainer.
 
