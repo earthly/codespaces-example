@@ -2,6 +2,9 @@
 
 An example of how to use Earthly with Docker in Codespaces.
 
+The repo is provided as a template for any new repos you would like to create using Earthly.
+For setup steps for existing repositories select from the [Setup](#Setup) sections below.
+
 ## Overview
 
 Earthly can be run from within configured Codespaces as part of your customized dev environments. It can be added either by:
@@ -20,20 +23,22 @@ Earthly has been tested with Codespaces on Github.com and in Visual Studio Code.
 - [Codespaces Deep Dive](https://docs.github.com/en/codespaces/getting-started/deep-dive)
 - [Secrets for Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/configuring-dev-containers/specifying-recommended-secrets-for-a-repository)
 
-## Basic Setup
+## Setup
+
+### Basic Setup
 
 The basic setup for Earthly in Codespaces uses Docker for running Earthly.
 
 1. Add the .devcontainer folder and contents to the root of your repo
-1. Update the example devcontainer.json and Dockerfile to include any other features or settings you require
+1. Update the example devcontainer.json and include any other features or settings you require
 1. Update the example Earthfile as required by your project
 1. Run `Rebuild Container` on your codespace to have it rebuild your devcontainer with the updated configuration
 1. Test the installation by running `earthly github.com/earthly/hello-world+hello`
 1. Your Earthly commands will now run on docker in Codespaces!
 
-_Note_: It is recommended to login to the docker registry to avoid any rate limiting issues.
+_Note_: It is recommended to login to the docker registry to avoid any rate limiting issues. Follow the guide linked in the devcontainer.json for how to setup your secrets in your codespace.
 
-## Setup with Satellites (Recommended)
+### Setup with Satellites (Recommended)
 
 With Satellites you can run Earthly in your devcontainer without needing to install docker or podman! This can allow you to have a more simplified setup as well as faster Earthly build times!
 
@@ -50,7 +55,7 @@ _Note_: At this time the `SAVE IMAGE --push` command in Earthfiles requires you 
 1. Launch your satellite: `earthly sat launch {YOUR_SAT_NAME_HERE}`
 1. Your Earthly commands will now run on your satellite!
 
-## Setup with Podman (Manually customizing your Devcontainer)
+### Setup with Podman (Manually customizing your Devcontainer)
 
 Currently there are known issues with running Earthly with Podman on an environment that uses cgroup v2 on Codespaces (which runs as a Docker container). You can check what version of cgroup your podman installation is using by running:
 

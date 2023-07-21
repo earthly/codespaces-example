@@ -1,13 +1,13 @@
 {
 	"name": "Earthly Docker",
-	"dockerFile": "Dockerfile",
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	
-    // Installs docker-in-docker feature
+    // Installs earthly with docker and bootstraps it
 	"features": {
-		"docker-in-docker": {
-			"version": "latest"
-		}
-	},
+        "ghcr.io/earthly/devcontainer-features/earthly:1": {
+            "bootstrap": true
+        }
+    },
 
     // Adds on Earthly syntax highlighting extension
 	"customizations": {
