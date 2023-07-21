@@ -3,7 +3,7 @@
 An example of how to use Earthly with Docker in Codespaces.
 
 The repo is provided as a template for any new repos you would like to create using Earthly.
-For setup steps for existing repositories select from the [Setup](#Setup) sections below.
+For setup steps for existing repositories select from the [Setup](#setup) sections below.
 
 ## Overview
 
@@ -44,7 +44,7 @@ With Satellites you can run Earthly in your devcontainer without needing to inst
 
 _Note_: At this time the `SAVE IMAGE --push` command in Earthfiles requires you to have docker or podman installed. If you will be using this command you will still need to include installing docker in your devcontainer otherwise it can be removed.
 
-1. Follow the [Basic Setup](#Basic-Setup) steps above
+1. Follow the [Basic Setup](#basic-setup) steps above
 1. If you already have an Earthly account:
     - Login to your Earthly account in your devcontainer `earthly account login --token {YOUR_TOKEN_HERE}`
     
