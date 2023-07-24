@@ -40,11 +40,13 @@ _Note_: It is recommended to login to DockerHub to avoid any rate limiting issue
 
 ### Setup with Satellites (Recommended)
 
-With Satellites you can run Earthly in your devcontainer without needing to install docker or podman! This can allow you to have a more simplified setup as well as faster Earthly build times!
+With Satellites you can run Earthly in your devcontainer and only optionally install docker or podman if you prefer a smaller devcontainer environment. Other benefits include sharing compute and cache with your coworkers or CI for faster build times and benefiting from high-bandwidth internet access from the satellite.
 
-_Note_: At this time to use `SAVE IMAGE --push` command in Earthfiles without docker or podman installed required you to use the `--no-output` flag. For example `earthly --org my-org --no-output --push +hello`
+This example uses the earthly devcontainer feature for simplicity.
 
-1. Follow the [Basic Setup](#basic-setup) steps above
+_Note_: If you do want to use Earthly on Codespaces without installing docker or podman: At this time to use `SAVE IMAGE --push` command in Earthfiles without docker or podman installed requires you to use the `--no-output` flag. For example `earthly --org my-org --no-output --push +hello`
+
+1. Follow the [Basic Setup](#basic-setup) steps 1-3 above
 1. If you already have an Earthly account:
     - Add your Earthly login token as a Codespaces secret `EARTHLY_TOKEN`
     
@@ -55,6 +57,8 @@ _Note_: At this time to use `SAVE IMAGE --push` command in Earthfiles without do
     - Then add your Earthly login token as a Codespaces secret `EARTHLY_TOKEN`
 1. Set your Earthly org name in devcontainer.json: `EARTHLY_ORG`
 1. Set your Satellite name in devcontainer.json: `EARHTLY_SATELLITE`
+1. Run `Rebuild Container` on your codespace to have it rebuild your devcontainer with the updated configuration
+1. Test your satellelite is setup by viewing the `Creation Log` or run `earthly sat --org ${YOUR ORG NAME} ls` to check its status
 1. Your Earthly commands will now run on your satellite!
 
 ### Setup with Podman (Manually customizing your Devcontainer)
