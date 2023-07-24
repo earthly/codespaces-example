@@ -42,7 +42,7 @@ _Note_: It is recommended to login to DockerHub to avoid any rate limiting issue
 
 With Satellites you can run Earthly in your devcontainer and only optionally install docker or podman if you prefer a smaller devcontainer environment. Other benefits include sharing compute and cache with your coworkers or CI for faster build times and benefiting from high-bandwidth internet access from the satellite.
 
-This example uses the earthly devcontainer feature for simplicity.
+This example uses the Earthly devcontainer feature for simplicity.
 
 _Note_: If you do want to use Earthly on Codespaces without installing docker or podman: At this time to use `SAVE IMAGE --push` command in Earthfiles without docker or podman installed requires you to use the `--no-output` flag. For example `earthly --org my-org --no-output --push +hello`
 
@@ -77,5 +77,5 @@ For more information on Podman with Devcontainers:
     
 - [Advanced Containers - Podman](https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman) 
     
-    _Note_: This doc refers to setting up Podman as a remote container instead internal to the devcontainer.
+    _Note_: This doc refers to setting up Podman as a remote container instead of as internal to the devcontainer.
 
