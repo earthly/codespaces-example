@@ -1,0 +1,52 @@
+{
+    "name": "Earthly Docker",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    
+    // Installs earthly with docker and bootstraps it
+    "features": {
+        "ghcr.io/earthly/devcontainer-features/earthly:1": {
+            "bootstrap": true
+        }
+    },
+
+    // Adds on Earthly syntax highlighting extension
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "earthly.earthfile-syntax-highlighting"
+            ]
+        }
+    },
+
+    // --------- Set the secrets below for automatic login when starting up your devcontainer
+
+    // You can update your repo to pass any required secrets then load them below
+    // It is recommended to login to docker to avoid rate limiting issues
+    // For more information on setting up your secrets read the guide here:
+    // https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/configuring-dev-containers/specifying-recommended-secrets-for-a-repository 
+    // "secrets": {
+    //     "DOCKERHUB_USERNAME": {
+    //       "description": "Your username for logging into dockerhub",
+    //     },
+    //     "DOCKERHUB_PASSWORD": {
+    //         "description": "Your password for logging into dockerhub",
+    //     },
+    //     "EARTHLY_TOKEN": {
+    //         "description": "Your Earthly token for logging into your Earthly account",
+    //     }
+    // },
+
+
+    // --------- Set the secrets below for automatic satellite selection when starting up your devcontainer
+
+    // "containerEnv": {
+    //     "EARTHLY_ORG": "YOUR EARTHLY ORG NAME HERE",
+    //     "EARHTLY_SATELLITE": "YOUR EARTHLY SATELLITE NAME HERE"
+    // },
+
+
+    // Run setup scripts for logging into DockerHub and Earthly
+    // This runs after the rest of the environment has been created
+    // Output can be viewing in the devcontainer creation.log
+    "postCreateCommand": "/bin/sh -c ./.devcontainer/postCreateCommand.sh"
+}
