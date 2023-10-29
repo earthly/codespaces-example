@@ -41,7 +41,7 @@
 
     // "containerEnv": {
     //     "EARTHLY_ORG": "YOUR EARTHLY ORG NAME HERE",
-    //     "EARHTLY_SATELLITE": "YOUR EARTHLY SATELLITE NAME HERE"
+    //     "EARTHLY_SATELLITE": "YOUR EARTHLY SATELLITE NAME HERE"
     // },
 
 
